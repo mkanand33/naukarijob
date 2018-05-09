@@ -1,0 +1,72 @@
+{% load static %}
+
+
+<!DOCTYPE HTML>
+<!--
+	Highlights by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>List of Jobs</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="{% static 'job/assets/css/main.css' %}" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Header -->
+			<section id="header">
+				<header class="major">
+					<h1>Find Your Jobs Here </h1>
+					<p>Scroll down for your dream job and click to apply for it....</a></p>
+				</header>
+				<div class="container">
+					<ul class="actions">
+						<li><a href="#one" class="button special scrolly">Add Your Jobs Here</a></li>
+						<form method="post">
+							{% csrf_token %}
+							<br>
+							<input placeholder="Enter your job title" type="text" name="title">
+							<br>
+							<input placeholder="Enter your job description" type="text" name="description">
+							<br>
+							<button type = "submit">Submit</button>
+						</form>	
+					</ul>
+				</div>
+			</section>
+
+		<!-- One -->
+			{% for each in job_detail %}
+			<section id="one" class="main special">
+				<div class="container">
+					<span class="image fit primary"><img src="{% static 'job/images/pic01.jpg' %}" alt="" /></span>
+					<div class="content">
+						<header class="major">
+							<h2>{{ each.title }}</h2>
+						</header>
+						<p>{{ each.description }}</p>
+					</div>
+					<a href="#two" class="goto-next scrolly">Next</a>
+				</div>
+			</section>
+			{% endfor %}
+
+		
+
+		<!-- Scripts -->
+			<script src="{% static 'job/assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'job/assets/js/jquery.scrollex.min.js' %}"></script>
+			<script src="{% static 'job/assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'job/assets/js/skel.min.js' %}"></script>
+			<script src="{% static 'job/assets/js/util.js' %}"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="{% static 'job/assets/js/main.js' %}"></script>
+
+	</body>
+</html>
